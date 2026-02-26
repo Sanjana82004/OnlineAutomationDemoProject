@@ -1,9 +1,19 @@
 package pageObject;
 
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignupLogin {
+public class SignupLogin extends basePage {
+
+	public SignupLogin(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
 
 	@FindBy(xpath = "//input[@data-qa='login-email']")
      WebElement loginEmailInput;
@@ -23,6 +33,10 @@ public class SignupLogin {
 
     @FindBy(xpath = "//button[normalize-space()='Signup']")
      WebElement signupBtn;
+    
+  @FindBy(xpath ="//p[normalize-space()='Your email or password is incorrect!']")  WebElement loginError;
+    
+  //body
 
 
     // --- 3. Individual Action Methods ---
@@ -40,6 +54,15 @@ public class SignupLogin {
 
     public void clickLoginButton() {
         loginBtn.click();
+    }
+    
+    public String getErrorLogin() {
+    	try {
+           utils.waitForElementVisible(loginError, 10);
+           return loginError.getText();
+        } catch (Exception e) {
+            return "Error element not found on page!";
+        }
     }
 
     // Signup Methods

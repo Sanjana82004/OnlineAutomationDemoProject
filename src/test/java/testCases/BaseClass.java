@@ -11,6 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -21,6 +22,14 @@ public class BaseClass {
 	
 	@BeforeClass
 	public void setup() {
+		
+		
+		ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-popup-blocking");
+        // Automation Exercise ke ads block karne ke liye ye best hai
+        options.addArguments("--disable-infobars");
+		
 		driver = new ChromeDriver();
 		driver.get("https://automationexercise.com");
 		driver.manage().window().maximize();
@@ -46,6 +55,7 @@ public class BaseClass {
     	 //sourceFile.renameTo(targetFile);
     	return targetFilePath;
     	}
+	
 	
 	
 }
