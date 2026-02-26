@@ -185,7 +185,7 @@ public class ProductsPage extends basePage {
     }
 
     public void addProductToCart() {
-        addToCartBtn.click();
+        utils.jsClick(addToCartBtn);
     }
 
     public void viewCart() {

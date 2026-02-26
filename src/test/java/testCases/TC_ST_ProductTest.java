@@ -51,7 +51,10 @@ public class TC_ST_ProductTest extends BaseClass {
     public void verifyCategoryFilter() {
         // Step 1: Women section expand karein
         pp.openWomenSection();
-        try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        try { Thread.sleep(1000); } 
+        catch (InterruptedException e) 
+        { e.printStackTrace();
+        }
         
         // Step 3: Dress select karein (Ab ye JS click use karega)
         pp.selectWomenDress();
