@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import utilities.GenericsUtils;
+
 public class checkOut extends basePage {
 
 	public checkOut(WebDriver driver) {
@@ -81,12 +83,18 @@ public class checkOut extends basePage {
 
 		// 4. Message box mein text likhne ke liye
 		public void enterDescriptionMessage(String msg) {
-			messageBox.sendKeys(msg);
+			utils.scrollToElement(messageBox); 
+		    utils.waitForElementVisible( messageBox, 15);
+		    
+		    messageBox.clear();
+		    messageBox.sendKeys(msg);
 		}
 
 		// 5. Order button par click karne ke liye
 		public void clickOnPlaceOrder() {
-			placeOrderBtn.click();
+			utils.scrollToElement(placeOrderBtn);
+			utils.waitForElementClickable(placeOrderBtn, 10);
+			utils.jsClick(placeOrderBtn);
 	
 	
 	
