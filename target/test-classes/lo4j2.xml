@@ -2,10 +2,10 @@
 <Configuration status="WARN">
 
     <Properties>
-        <Property name="basePath">./logs</Property>
+        <Property name="basePath">./logs</Property>// here we are variable declaring the base path that is the log folderin the current directory
     </Properties>
 
-    <Appenders>
+    <Appenders>// this are appenders which decides wether the logs wll get genreated it contains the  console section along with file section
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss} %-5level %c - %msg%n" />
         </Console>
@@ -15,7 +15,7 @@
         </File>
     </Appenders>
 
-    <Loggers>
+    <Loggers>// this esction will tell us the type of logs thai is here is info and the appenderreferce is also witten here
         <Root level="info">
             <AppenderRef ref="Console" />
             <AppenderRef ref="File" />
