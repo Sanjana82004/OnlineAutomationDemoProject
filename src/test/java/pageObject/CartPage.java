@@ -8,23 +8,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CartPage {
+public class CartPage extends basePage{
 
     WebDriver driver;
 
     public CartPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     // all rows of cart
     @FindBy(xpath = "//tbody/tr")
-    private List<WebElement> cartRows;
+     List<WebElement> cartRows;
 
 
     @FindBy(xpath = "//ol[@class='breadcrumb']//a[normalize-space()='Home']")
-    private WebElement homeBtn;
+    WebElement homeBtn;
 
+    
+    @FindBy(xpath = "//a[@class='btn btn-default check_out']")
+     WebElement proceedToCheckoutBtn;
 
     // ---------- ACTION METHODS ----------
 
@@ -48,4 +50,22 @@ public class CartPage {
     public void clickHome(){
         homeBtn.click();
     }
-}
+    
+    public void clickProceedToCheckout() {
+        // Pehle scroll karein taaki button dikhne lage
+        utils.scrollToElement(proceedToCheckoutBtn);
+        
+        // Wait karein ki button clickable hai ya nahi
+        utils.waitForElementClickable(proceedToCheckoutBtn, 10);
+        
+        try {
+            proceedToCheckoutBtn.click();
+        } catch (Exception e) {
+            // Agar normal click fail ho (overlay/ads ki wajah se), toh JS click use karein
+            utils.jsClick(proceedToCheckoutBtn);
+        }
+    }
+    
+   
+    
+    }
