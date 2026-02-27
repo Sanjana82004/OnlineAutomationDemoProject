@@ -3,18 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.TC_ST_checkoutTest">
+      <class name="testCases.TC_ST_PaymentPageTest">
         <methods>
-          <include name="verifyCartCalculation"/>
-          <include name="setupPage"/>
+          <include name="verifyCVCLength"/>
           <include name="setup"/>
-          <include name="verifyOrderCommentsInput"/>
+          <include name="verifyPastExpiryDate"/>
+          <include name="setPage"/>
+          <include name="verifySuccessfulPayment"/>
           <include name="tearDown"/>
-          <include name="verifyCheckoutPageUI"/>
-          <include name="verifyPlaceOrderNavigation"/>
-          <include name="verifyAddressConsistency"/>
+          <include name="verifyInvalidCardNumber"/>
+          <include name="verifyAllFieldsDisplayed"/>
         </methods>
-      </class> <!-- testCases.TC_ST_checkoutTest -->
+      </class> <!-- testCases.TC_ST_PaymentPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
