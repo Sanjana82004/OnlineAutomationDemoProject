@@ -55,6 +55,11 @@ public class homePage extends basePage
   @FindBy(id = "success-subscribe")
    WebElement successAlert;
   
+
+  @FindBy(xpath= "//li[10]//a[1]")
+  WebElement loggedinMessage;
+  
+  
   
 
     // 3. Action Methods (Re-usable functions)
@@ -75,6 +80,9 @@ public class homePage extends basePage
 
     public void clickSignupLogin() {
         signupLoginLink.click();
+    }
+    public boolean SignupLoginDisplayed() {
+        return signupLoginLink.isDisplayed();
     }
 
     public void clickTestCases() {
@@ -108,6 +116,9 @@ public class homePage extends basePage
     
     public String getSubscriptionSuccessMessage() {
         return successAlert.getText();
+    }
+    public String getLoggedInmessage() {
+    	return loggedinMessage.getText();
     }
     
 	
