@@ -4,11 +4,7 @@
   <artifactId>OnlineAutomationDemoProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
-  	<dependency>
-  		<groupId>AutomationExercise</groupId>
-  		<artifactId>AutomationExercise</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+  
   	
   	
   	
