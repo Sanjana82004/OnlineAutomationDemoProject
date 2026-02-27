@@ -22,18 +22,25 @@ public class BaseClass {
 	
 	@BeforeClass
 	public void setup() {
-		
-		
-		ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-popup-blocking");
-        // Automation Exercise ke ads block karne ke liye ye best hai
-        options.addArguments("--disable-infobars");
-		
-		driver = new ChromeDriver();
-		driver.get("https://automationexercise.com");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	    try {
+
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--disable-notifications");
+	        options.addArguments("--disable-popup-blocking");
+	        options.addArguments("--disable-infobars");
+
+	        driver = new ChromeDriver(options);
+
+	        driver.manage().deleteAllCookies();
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	        driver.manage().window().maximize();
+	        driver.get("https://automationexercise.com");
+
+	    } catch (Exception e) {
+	        System.out.println("Driver initialization failed: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 	
 	
