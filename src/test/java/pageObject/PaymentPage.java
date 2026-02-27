@@ -2,6 +2,7 @@ package pageObject;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,19 +16,19 @@ public class PaymentPage extends basePage {
 		
 	}
 	
-	@FindBy(xpath = "(//div[@class='col-md-12 form-group'])[1]//input")
+	@FindBy(xpath = "//input[@name='name_on_card']")
      WebElement nameOnCardField;
 
-    @FindBy(xpath = "(//div[@class='col-md-12 form-group'])[2]//input")
+    @FindBy(xpath = "//input[@name='card_number']")
      WebElement cardNumberField;
 
-    @FindBy(xpath = "(//div[@class='col-md-12 form-group'])[3]//input")
+    @FindBy(xpath = "//input[@placeholder='ex. 311']")
      WebElement cvcField;
 
-    @FindBy(xpath = "(//div[@class='col-md-12 form-group'])[4]//input")
+    @FindBy(xpath = "//input[@placeholder='MM']")
      WebElement expiryMonthField;
 
-    @FindBy(xpath = "(//div[@class='col-md-12 form-group'])[5]//input")
+    @FindBy(xpath = "//input[@placeholder='YYYY']")
      WebElement expiryYearField;
     
     @FindBy(xpath = "//button[@id='submit']")
@@ -59,8 +60,13 @@ public class PaymentPage extends basePage {
     }
 
     public void clickPayButton() {
-    	utils.waitForElementClickable(submitButton, 10);
-    	submitButton.click();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement button = wait.until(
+            ExpectedConditions.elementToBeClickable(submitButton));
+        
+
+        button.click();
     }
 	
 
