@@ -35,7 +35,7 @@ public class TC_ST_LoginTest extends BaseClass{
 	@Test(priority = 2)
 	public void verifyValidLogin() {
 		hp.clickSignupLogin();
-		sp.enterLoginEmail("rinku");
+		sp.enterLoginEmail("rinku123@gmail.com");
 		sp.enterLoginPassword("rinku123@");
 		sp.clickLoginButton();
 		Assert.assertTrue(driver.getCurrentUrl().contains("automationexercise"), "Login failed!");	
@@ -46,7 +46,7 @@ public class TC_ST_LoginTest extends BaseClass{
 	
 	public void verifyInvalidLogin() {
 		hp.clickSignupLogin();
-		sp.enterLoginEmail("rinku");
+		sp.enterLoginEmail("rinku123");
 		sp.enterLoginPassword("rinku123@");
 		sp.clickLoginButton();
 		String actual = sp.getErrorLogin();

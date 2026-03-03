@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import junit.framework.Assert;
+import org.testng.Assert;
 import pageObject.AddToCartModal;
 import pageObject.CartPage;
 import pageObject.ProductsPage;
@@ -31,30 +31,37 @@ public class TC_ST_checkoutTest extends BaseClass{
 		modal = new AddToCartModal(driver);
 		cp = new CartPage(driver);
 		sp = new SignupLogin(driver);
+		hp.clickSignupLogin();
+		
+		sp.enterLoginEmail("parul123@gmail.com");
+		sp.enterLoginPassword("parul123@");
+		sp.clickLoginButton();
+		
 		hp.clickProducts();
+		
+		pp.searchProduct("Blue Top");
 		pp.addProductToCart();
 		modal.clickViewCart();
 		
 		cp.clickProceedToCheckout();
 		
-		sp.enterLoginEmail("rinku");
-		sp.enterLoginPassword("rinku123@gmail.com");
-		sp.clickLoginButton();
+		
 		
   }
   
   @Test(priority = 1)
   public void verifyCheckoutPageUI()
   {
-	   String headerText = checkoutPage.getAddressHeaderText();
-	   Assert.assertEquals(headerText, "Address Details", "header mismatch!");
+	   String headerText = checkoutPage.getAddressHeaderText().trim();
+	   String expectedHeader = "Address Details";
+	   Assert.assertEquals(headerText, expectedHeader, "header mismatch!");
   }
   @Test(priority = 2)
   
   public void verifyAddressConsistency() {
 	String delivery = checkoutPage.getDeliveryAddressDetails() ;
 	String biling = checkoutPage.getBillingAddressDetails();
-	Assert.assertEquals(delivery, biling, "delivery and billing address are not identical!");
+	Assert.assertTrue(delivery.contains("Mrs. parul Tiwari")&& biling.contains("Mrs. parul Tiwari"), "Name  mismatch!");
   }
   
 @Test(priority = 3)
@@ -62,7 +69,7 @@ public void verifyCartCalculation() {
 	
 	checkoutPage.readAndVerifyCartData();
 	boolean isTotalVisible = driver.getPageSource().contains("Total Amount");
-    Assert.assertTrue(isTotalVisible);
+    Assert.assertTrue(isTotalVisible,"total amount label not found on page!");
 }
 
 @Test(priority = 4)
