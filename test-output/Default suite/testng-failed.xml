@@ -3,17 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.TC_VD_Authentication">
+      <class name="testCases.verifyUserRegistrationDDT">
         <methods>
-          <include name="init"/>
           <include name="setup"/>
-          <include name="verifyInvalidLogin"/>
-          <include name="verifySignupWithExistingEmail"/>
+          <include name="verifyUserRegistration" invocation-numbers="2 3 4 5 6"/>
           <include name="tearDown"/>
-          <include name="verifyValidLogin"/>
-          <include name="verifyUserRegistration"/>
+          <include name="init"/>
         </methods>
-      </class> <!-- testCases.TC_VD_Authentication -->
+      </class> <!-- testCases.verifyUserRegistrationDDT -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

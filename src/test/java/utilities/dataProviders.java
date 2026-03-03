@@ -24,4 +24,26 @@ public class dataProviders {
 		return logindata;
 	}
 	
+	
+	
+	 @DataProvider(name = "RegistrationData")
+	    public String[][] getRegistrationData() throws IOException {
+
+	        String path = System.getProperty("user.dir") + "/testData/RegistrationData.xlsx";
+	        ExcelUtility xlutil = new ExcelUtility(path);
+
+	        int totalrows = xlutil.getRowCount("Sheet1");
+	        int totalcols = xlutil.getCellCount("Sheet1", 1);
+
+	        String regdata[][] = new String[totalrows][totalcols];
+
+	        for (int i = 1; i <= totalrows; i++) {
+	            for (int j = 0; j < totalcols; j++) {
+	                regdata[i - 1][j] = xlutil.getCellData("Sheet1", i, j);
+	            }
+	        }
+
+	        return regdata;
+	    }
+	
 }
