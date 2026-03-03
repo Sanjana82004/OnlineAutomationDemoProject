@@ -46,7 +46,7 @@ public class TC_ST_LoginTest extends BaseClass{
 	
 	public void verifyInvalidLogin() {
 		hp.clickSignupLogin();
-		sp.enterLoginEmail("rinku123");
+		sp.enterLoginEmail("rinku123@gmail.com");
 		sp.enterLoginPassword("rinku123@");
 		sp.clickLoginButton();
 		String actual = sp.getErrorLogin();
@@ -59,8 +59,8 @@ public class TC_ST_LoginTest extends BaseClass{
 	
 	public void verifyLogout() {
 		hp.clickSignupLogin();
-		sp.enterLoginEmail("rinku123@gmail.com");
-	    sp.enterLoginPassword("rinku123@");
+		sp.enterLoginEmail("parul123@gmail.com");
+	    sp.enterLoginPassword("parul123@");
 	    sp.clickLoginButton();
 	    
 	    hp.clickLogout();

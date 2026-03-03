@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.testng.ITestContext;
+import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -18,7 +19,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import testCases.BaseClass;
 
-public class ExtentReportManager {
+public class ExtentReportManager implements ITestListener {
 
 	public ExtentSparkReporter sparkReporter;
 	   public ExtentReports extent;
@@ -28,7 +29,7 @@ public class ExtentReportManager {
 		 
 		   
 		   String timeStamp = new SimpleDateFormat("yyy.MM.dd.HH.mm.ss").format(new Date());
-		   repName = "Test-Report" +timeStamp+".html";
+		   repName = "Test-Report-" +timeStamp+".html";
 		   
 		   sparkReporter = new ExtentSparkReporter(".\\reports\\"+ repName);
 		   

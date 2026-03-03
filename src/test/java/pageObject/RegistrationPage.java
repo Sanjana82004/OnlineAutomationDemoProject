@@ -69,6 +69,10 @@ public class RegistrationPage extends basePage {
 
     @FindBy(xpath = "//button[normalize-space()='Create Account']")
     WebElement createAccountBtn;
+    
+  
+    @FindBy(xpath = "//a[@class='btn btn-primary']")
+    WebElement continuebtn;
 
     // --- Action Methods ---
 
@@ -150,6 +154,9 @@ public class RegistrationPage extends basePage {
 
     public void clickCreateAccountButton() {
         createAccountBtn.click();
+    }
+    public void clickContinueButton() {
+        continuebtn.click();
     }
 
 }

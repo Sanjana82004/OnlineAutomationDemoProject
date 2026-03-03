@@ -19,7 +19,7 @@ public class TC_ST_ProductTest extends BaseClass {
         pp = new ProductsPage(driver);
         
         // Products page par jana har test ki basic requirement hai
-        hp.clickProducts(); 
+        hp.clickProducts();
     }
 
     // 1. Verify All Products Page Load
@@ -34,7 +34,7 @@ public class TC_ST_ProductTest extends BaseClass {
     // 2. Verify Product Search Functionality
     @Test(priority = 2)
     public void verifyProductSearch() {
-        String productName = "Blue Top";
+        String productName = "kids";
         pp.searchProduct(productName);
         
         // Search ke baad title check karein

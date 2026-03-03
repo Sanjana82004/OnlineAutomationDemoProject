@@ -7,6 +7,8 @@ import java.time.Duration;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,23 +19,32 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseClass {
 
-	public WebDriver driver;
-	
+	public static WebDriver driver;
+	public static Logger logger;
 	
 	@BeforeClass
 	public void setup() {
-		
-		
-		ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-popup-blocking");
-        // Automation Exercise ke ads block karne ke liye ye best hai
-        options.addArguments("--disable-infobars");
-		
-		driver = new ChromeDriver();
-		driver.get("https://automationexercise.com");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	    try {
+
+	        ChromeOptions options = new ChromeOptions();
+	        options.addArguments("--disable-notifications");
+	        options.addArguments("--disable-popup-blocking");
+	        options.addArguments("--disable-infobars");
+
+	        driver = new ChromeDriver(options);
+	        
+	      logger = LogManager.getLogger(this.getClass());  
+
+	        driver.manage().deleteAllCookies();
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	        driver.manage().window().maximize();
+	        driver.get("https://automationexercise.com");
+
+	    } catch (Exception e) {
+	        System.out.println("Driver initialization failed: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 	
 	
@@ -51,8 +62,8 @@ public class BaseClass {
     	
     	String targetFilePath = System.getProperty("user.dir") + "\\screenshots\\"+tname+"_"+timeStamp+".png";
     	File targetFile = new File(targetFilePath);
-    	FileUtils.copyFile(sourceFile, targetFile);
-    	 //sourceFile.renameTo(targetFile);
+    	//FileUtils.copyFile(sourceFile, targetFile);
+    	   sourceFile.renameTo(targetFile);
     	return targetFilePath;
     	}
 	

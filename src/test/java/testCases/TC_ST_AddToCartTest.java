@@ -26,9 +26,13 @@ public class TC_ST_AddToCartTest extends BaseClass
 		pp.addProductToCart();
 	}
 	
+	
+	
 	@Test(priority = 1)
 	
 	public void testModalDisplayAndMessage() {
+		
+		logger.info("testing priotity 1");
 		Assert.assertTrue(modal.isModalDisplayed());
 		
 		String successText = modal.getAddedMessageText();
@@ -39,6 +43,7 @@ public class TC_ST_AddToCartTest extends BaseClass
 	@Test(priority = 2)
 	
 	public void testViewCartNavigation() {
+		logger.info("testing priotity 2");
 		modal.clickViewCart();	
 		String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/view_cart"));
@@ -47,6 +52,7 @@ public class TC_ST_AddToCartTest extends BaseClass
 	
 	@Test(priority = 3)
     public void testContinueShoppingFunctionality() {
+		logger.info("testing priotity 3");
         modal.clickContinueShopping();
         
         // Verify karein ki modal band ho gaya hai
@@ -62,6 +68,7 @@ public class TC_ST_AddToCartTest extends BaseClass
 	
 	@Test(priority = 4)
     public void testSuccessTitleVisibility() {
+		logger.info("testing priotity 4");
         Assert.assertTrue(modal.isAddedMessageVisible());
     }
 	

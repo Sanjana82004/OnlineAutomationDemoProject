@@ -57,12 +57,8 @@ public class SignupLogin extends basePage {
     }
     
     public String getErrorLogin() {
-    	try {
-           utils.waitForElementVisible(loginError, 10);
-           return loginError.getText();
-        } catch (Exception e) {
-            return "Error element not found on page!";
-        }
+    	utils.waitForElementVisible(loginError,  10);
+    	return loginError.getText();
     }
 
     // Signup Methods

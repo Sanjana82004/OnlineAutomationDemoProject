@@ -4,11 +4,7 @@
   <artifactId>OnlineAutomationDemoProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
-  	<dependency>
-  		<groupId>AutomationExercise</groupId>
-  		<artifactId>AutomationExercise</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+  
   	
   	
   	
@@ -82,13 +78,12 @@
 
 
 <!-- Source: https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
-<dependency>
+
+  	<dependency>
     <groupId>org.apache.commons</groupId>
-    <artifactId>commons-email</artifactId>
-    <version>1.6.0</version>
-    <scope>compile</scope>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.14.0</version>
 </dependency>
-  	
   	
   	
   </dependencies>

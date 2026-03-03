@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite">
+
+<listeners>
+<listener class-name = "utilities.ExtentReportManager"/>
+</listeners>
+
+
+  <test thread-count="5" name="Test">
+    <classes>
+      <!--<class name="testCases.TC_ST_PaymentPageTest"/>-->
+      <!-- <class name="testCases.TC_VD_Authentication"/>-->
+      <class name="testCases.TC_ST_homePageTest"/>
+      <class name="testCases.TC_ST_LoginTest"/>
+      <class name="testCases.TC_ST_ProductTest"/>
+      
+       <class name="testCases.TC_ST_AddToCartTest"/>
+      
+      <class name="testCases.TC_ST_CaartTests"/>
+      <class name="testCases.TC_ST_checkoutTest"/>
+  
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
